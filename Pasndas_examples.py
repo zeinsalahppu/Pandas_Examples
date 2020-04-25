@@ -26,7 +26,17 @@ psg_dict = {
 
 passengers_df = pd.DataFrame(psg_dict, columns=["Id", "Name", "Gender", "Age"])
 
-print(passengers_df)
+passengers_df.to_excel('passengers.xlsx')
+
+
+
+# print(passengers_df.loc[3])
+#
+# print(passengers_df.loc[[3 , 4]])
+#
+# print(passengers_df.loc[3, "Age"])
+#
+# print(passengers_df.loc[passengers_df["Age"] > 27])
 
 
 # # print(type(passengers_df))
