@@ -19,13 +19,16 @@ import pandas as pd
 
 psg_dict = {
     "Id": [111, 222, 333, 444, 555],
-    "Name": ["Adam", "Bernhard", "Adam", "Dirk", "Elizabeth"],
+    "Name": ["Adam", "Bernhard", "Christina", "Dirk", "Elizabeth"],
     "Age": [18, 30, 25, 55, 39],
     "Gender": ["male", "male", "female", "male", "female"]
     }
 
-passengers_df = pd.DataFrame(psg_dict)
-# # print(passengers_df)
+passengers_df = pd.DataFrame(psg_dict, columns=["Id", "Name", "Gender", "Age"])
+
+print(passengers_df)
+
+
 # # print(type(passengers_df))
 #
 # names = passengers_df["Name"]
@@ -37,4 +40,3 @@ passengers_df = pd.DataFrame(psg_dict)
 # print(ages.max())
 # print(ages.mean())
 
-print(passengers_df.first_valid_index)
