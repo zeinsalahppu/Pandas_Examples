@@ -7,7 +7,7 @@ Semester: SS 2020
 import pandas as pd
 
 soccer_df = pd.read_csv("data/england-premier-league-players-2018-to-2019-stats.csv")
-#print(soccer_df.info())
+print(soccer_df)
 
 
 # pd.set_option('display.max_rows', None)
@@ -18,7 +18,7 @@ soccer_df = pd.read_csv("data/england-premier-league-players-2018-to-2019-stats.
 #print(soccer_df)
 
 compact_soccer = soccer_df[["full_name", "age", "nationality", "Current Club", "position"]]
-# print(compact_soccer)
+print(compact_soccer)
 # compact_soccer = compact_soccer.set_index('full_name')
 
 # ms = compact_soccer.loc["Mohamed Salah"]
@@ -30,11 +30,14 @@ compact_soccer = soccer_df[["full_name", "age", "nationality", "Current Club", "
 # soccer_over37 = compact_soccer.loc[compact_soccer["age"] > 37]
 # print(soccer_over37)
 
-p1 = compact_soccer.iloc[0]
-print(p1)
+df2 = compact_soccer[["full_name", "age", "nationality"]][compact_soccer["nationality"] == "Spain"]
+print(df2)
 
-smaller_soccer1_df = compact_soccer.iloc[0:40:5]
-print(smaller_soccer1_df)
-
-smaller_soccer2_df = compact_soccer.iloc[0:40:5, :3]
-print(smaller_soccer2_df)
+# p1 = compact_soccer.iloc[0]
+# print(p1)
+#
+# smaller_soccer1_df = compact_soccer.iloc[0:40:5]
+# print(smaller_soccer1_df)
+#
+# smaller_soccer2_df = compact_soccer.iloc[0:40:5, :3]
+# print(smaller_soccer2_df)
