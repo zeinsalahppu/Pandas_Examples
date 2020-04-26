@@ -5,36 +5,27 @@ Semester: SS 2020
 """
 
 import pandas as pd
+import matplotlib.pyplot as plt
+import numpy as np
+from sklearn import datasets, linear_model
 
-soccer_df = pd.read_csv("data/england-premier-league-players-2018-to-2019-stats.csv")
-#print(soccer_df.info())
+ice_df = pd.read_csv("data/ics_vs_temp.csv")
 
+temp_list = ice_df["AvgTemperature"]
+temp_list = temp_list[:, np.newaxis]
+ice_sales_list = ice_df["IcecreamSales"]
 
-# pd.set_option('display.max_rows', None)
-# pd.set_option('display.max_columns', 6)
-# pd.set_option('display.width', None)
-# #pd.set_option('display.max_colwidth', -1)
+regr = linear_model.LinearRegression()
 
-#print(soccer_df)
+regr.fit(temp_list, ice_sales_list)
 
-compact_soccer = soccer_df[["full_name", "age", "nationality", "Current Club", "position"]]
-# print(compact_soccer)
-# compact_soccer = compact_soccer.set_index('full_name')
+predicted_ice_sales = regr.predict(temp_list)
 
-# ms = compact_soccer.loc["Mohamed Salah"]
-# print(ms)
-#
-# liverpool_df = compact_soccer.loc[compact_soccer["Current Club"] == "Liverpool"]
-# print(liverpool_df)
-#
-# soccer_over37 = compact_soccer.loc[compact_soccer["age"] > 37]
-# print(soccer_over37)
+test_data = np.array([30, 40])
+test_data = test_data[:, np.newaxis]
 
-p1 = compact_soccer.iloc[0]
-print(p1)
+print(regr.predict(test_data))
 
-smaller_soccer1_df = compact_soccer.iloc[0:40:5]
-print(smaller_soccer1_df)
-
-smaller_soccer2_df = compact_soccer.iloc[0:40:5, :3]
-print(smaller_soccer2_df)
+plt.scatter(temp_list, ice_sales_list)
+plt.plot(temp_list, predicted_ice_sales)
+plt.show()
