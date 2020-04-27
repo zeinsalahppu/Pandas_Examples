@@ -7,7 +7,7 @@ Semester: SS 2020
 import pandas as pd
 import matplotlib.pyplot as plt
 import numpy as np
-from sklearn import datasets, linear_model
+from sklearn import linear_model
 
 ice_df = pd.read_csv("data/ics_vs_temp.csv")
 
